@@ -11,7 +11,7 @@ const ContentList: React.FC = () => {
           </h1>
           <div className="grid-container">
             {[1,2,3,4].map(qty=>(
-                <div className="grid-item">
+              <div className="grid-item">
                 <div className="card-container">
                   <img src={Image} alt="" />
                   <span>
@@ -21,8 +21,7 @@ const ContentList: React.FC = () => {
                       Conferir
                   </button>
                 </div>
-                
-            </div>
+              </div>
             ))}
               
           </div>

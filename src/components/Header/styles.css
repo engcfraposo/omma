@@ -14,7 +14,7 @@ header div.logo-area{
     background-color: #FFC107;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;  
 }
 
 header div.logo-area img{
@@ -26,6 +26,7 @@ header div.logo-area img{
 
 header nav.menu{
     background-color: #FFA000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 header nav.menu ul{
@@ -57,11 +58,11 @@ header nav.menu ul li a{
     line-height: 24.38px;
     font-weight: bold;
     text-align: center;
+    transition: all 0.3s ease-in-out;
 }
 
 header nav.menu ul li a:hover{
     color: #FFC107;
-    transition: all 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 900px){
@@ -77,11 +78,11 @@ header nav.menu ul li a:hover{
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: all 0.3s ease-in-out;
     }
 
     header nav.menu ul li:hover{
         background-color: #FFC107;
-        transition: all 0.3s ease-in-out;
     }
 
     header nav.menu ul li a{

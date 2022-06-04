@@ -49,11 +49,11 @@ div.grid-item div.card-container img{
     max-height: 100%;
     filter: grayscale(1);
     border: 5px solid transparent;
+    transition: all 0.5s ease-in-out;
 }
 
 div.grid-item div.card-container img:hover{
     filter: grayscale(0);
-    transition: all 0.5s ease-in-out;
     border: 5px solid #FFC107;
 }
 
@@ -77,13 +77,13 @@ div.grid-item div.card-container button{
     line-height: 30px;
     border: none;
     border: 2px solid transparent;
+    transition: all 0.5s ease-in-out;
 }
 
 div.grid-item div.card-container button:hover{
     background-color: #fff;
     color: #176902;
     border: 2px solid #176902;
-    transition: all 0.5s ease-in-out;
 }
 
 
