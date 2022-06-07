@@ -4,14 +4,11 @@ import Header from './components/Header'
 import ContentList from './components/ContentList'
 
 import "./App.css"
+import AppRoutes from './routes'
 
 function App() {
   return (
-    <div className="container">
-      <Header />
-      <ContentList />
-      <Footer />
-    </div>
+    <AppRoutes />
   )
 }
 
