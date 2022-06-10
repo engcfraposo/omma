@@ -1,9 +1,10 @@
 import React from 'react';
+import * as S from "./styled"
 
 const Container = ({children}:{children: React.ReactNode}) => (
-    <div className="container">
+    <S.Container color="yellow">
         {children}
-    </div>
+    </S.Container>
 )
 
 export default Container;

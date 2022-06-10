@@ -1,9 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import "./styles.css"
+import * as S from "./styled"
 
 const Header: React.FC = () => {
+
+  const location = useLocation()
+  useEffect(()=>{console.log(location.pathname)},[location.pathname])
   return (
     <header>
     <div className="logo-area">
@@ -11,14 +15,14 @@ const Header: React.FC = () => {
     </div>
     <nav className="menu">
       <ul>
-        <li>
-          <Link to="/">Inicio</Link>
+        <li >
+          <S.MenuLink active={location.pathname}to="/">Inicio</S.MenuLink>
         </li>
         <li>
-          <Link to="/receitas">Receitas</Link>
+          <S.MenuLink active={location.pathname}to="/receitas">Receitas</S.MenuLink>
         </li>
         <li>
-          <Link to="/contatos">Contato</Link>
+          <S.MenuLink active={location.pathname}to="/contatos">Contato</S.MenuLink>
         </li>
       </ul>
     </nav>
