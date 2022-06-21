@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Image from "../../assets/image.png"
 import { getRecipes, postRecipes } from '../../services/recipes';
+import { RootState } from '../../store';
+import { addNewRecipe, setRecipeList } from '../../store/recipes';
 import './styles.css';
 
 interface Recipe {
@@ -11,15 +14,18 @@ interface Recipe {
 
 
 const ContentList: React.FC = () => {
-  const [recipeList, setRecipeList] = useState<Recipe[]>([] as Recipe[])
+  const recipeList = useSelector((state: RootState) => state.recipesReducer.recipe)
+  const dispatch = useDispatch()
+  //const [recipeList, setRecipeList] = useState<Recipe[]>([] as Recipe[])
 
   useEffect(()=>{
-    getRecipes().then(recipes => setRecipeList(
-      recipes.map(recipe => Object.assign(recipe, {
-        ...recipe,
-        image_url: Image
-      }))
-    ))
+    //getRecipes().then(recipes => setRecipeList(
+      //recipes.map(recipe => Object.assign(recipe, {
+        //...recipe,
+        //image_url: Image
+      //}))
+    //))
+    getRecipes().then(recipes => dispatch(setRecipeList(recipes)))
   },[])
 
   const handleAddRecipe = async () => {
@@ -27,9 +33,10 @@ const ContentList: React.FC = () => {
       title: "Receita",
       image_url: Image
     })
-    setRecipeList(oldRecipeList => [...oldRecipeList, newRecipe])
+    //setRecipeList(oldRecipeList => [...oldRecipeList, newRecipe])
+    dispatch(addNewRecipe(newRecipe))
   }
-  
+
   return (
       <main className="content-container">
           <h1>

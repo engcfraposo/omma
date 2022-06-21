@@ -11,17 +11,22 @@
     {
       "id": 1,
       "title": "Bolo de cenoura",
-      "image_url": "image.png"
+      "image_url": "/src/assets/image.png"
     },
     {
       "id": 2,
       "title": "Bolo de chocolate",
-      "image_url": "image.png"
+      "image_url": "/src/assets/image.png"
     },
     {
       "id": 3,
       "title": "Bolo de morango",
-      "image_url": "image.png"
+      "image_url": "/src/assets/image.png"
+    },
+    {
+      "title": "Receita",
+      "image_url": "/src/assets/image.png",
+      "id": 4
     }
   ]
 }
