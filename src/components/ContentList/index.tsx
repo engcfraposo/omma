@@ -1,42 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from "../../assets/image.png"
+import { getRecipes, postRecipes } from '../../services/recipes';
 import './styles.css';
 
 interface Recipe {
   id: number;
   title: string;
-  image: string;
+  image_url: string;
 }
 
-const recipes: Recipe[] = [
-  {
-    id: 1,
-    title: 'Bolo de cenoura',
-    image: Image,
-  },
-  {
-    id: 2,
-    title: 'Bolo de chocolate',
-    image: Image,
-  },
-  {
-    id: 3,
-    title: 'Bolo de morango',
-    image: Image,
-  },
-]
 
 const ContentList: React.FC = () => {
-  const [recipeList, setRecipeList] = useState<Recipe[]>(recipes)
+  const [recipeList, setRecipeList] = useState<Recipe[]>([] as Recipe[])
 
-  const handleAddRecipe = () => {
-    setRecipeList(oldRecipeList => 
-      [...oldRecipeList, {
-      id: oldRecipeList.length + 1,
+  useEffect(()=>{
+    getRecipes().then(recipes => setRecipeList(
+      recipes.map(recipe => Object.assign(recipe, {
+        ...recipe,
+        image_url: Image
+      }))
+    ))
+  },[])
+
+  const handleAddRecipe = async () => {
+    const newRecipe = await postRecipes({
       title: "Receita",
-      image: Image
-    }])
+      image_url: Image
+    })
+    setRecipeList(oldRecipeList => [...oldRecipeList, newRecipe])
   }
+  
   return (
       <main className="content-container">
           <h1>
@@ -44,9 +37,9 @@ const ContentList: React.FC = () => {
           </h1>
           <div className="grid-container">
             {recipeList.map(recipe=>(
-              <div className="grid-item">
+              <div className="grid-item" key={recipe.id}>
                 <div className="card-container">
-                  <img src={recipe.image} alt={recipe.title} />
+                  <img src={recipe.image_url} alt={recipe.title} />
                   <span>
                     {recipe.title}
                   </span>
